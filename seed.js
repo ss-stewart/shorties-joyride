@@ -1,3 +1,5 @@
+// RAPID API /////////////////////
+
 require('dotenv').config();
 require('./config/database');
 
