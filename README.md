@@ -1,1 +1,2 @@
-# SEI-CAFE
+Get sei project template...
+create and ref assets folder

@@ -1,44 +1,44 @@
 import { useState, useEffect, useRef } from 'react';
-import * as itemsAPI from '../../utilities/items-api';
+import * as bikesAPI from '../../utilities/bikes-api';
 import './NewOrderPage.css';
 import { Link } from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
-import MenuList from '../../components/MenuList/MenuList';
-import CategoryList from '../../components/CategoryList/CategoryList';
+import BikesFeturedList from '../../components/BikesFeturedList/BikesFeturedList';
+import MakeList from '../../components/MakeList/MakeList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
 export default function NewOrderPage({ user, setUser }) {
-  const [menuItems, setMenuItems] = useState([]);
+  const [bikesfeturedBikes, setBikesFeturedBikes] = useState([]);
   const [activeCat, setActiveCat] = useState('');
-  const categoriesRef = useRef([]);
+  const makesRef = useRef([]);
 
   // The empty dependency array causes the effect
   // to run ONLY after the FIRST render
   useEffect(function() {
-    async function getItems() {
-      const items = await itemsAPI.getAll();
-      categoriesRef.current = [...new Set(items.map(item => item.category.name))];
-      setMenuItems(items);
-      setActiveCat(categoriesRef.current[0]);
+    async function getBikes() {
+      const bikes = await bikesAPI.getAll();
+      makesRef.current = [...new Set(bikes.map(bike => bike.make.name))];
+      setBikesFeturedBikes(bikes);
+      setActiveCat(makesRef.current[0]);
     }
-    getItems();
+    getBikes();
   }, []);
 
   return (
     <main className="NewOrderPage">
       <aside>
         <Logo />
-        <CategoryList
-          categories={categoriesRef.current}
+        <MakeList
+          makes={makesRef.current}
           activeCat={activeCat}
           setActiveCat={setActiveCat}
         />
         <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
         <UserLogOut user={user} setUser={setUser} />
       </aside>
-      <MenuList
-        menuItems={menuItems.filter(item => item.category.name === activeCat)}
+      <BikesFeturedList
+        bikesfeturedBikes={bikesfeturedBikes.filter(bike => bike.make.name === activeCat)}
       />
       <OrderDetail />
     </main>

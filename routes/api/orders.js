@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const ordersCtrl = require('../../controllers/api/orders');
+const ordersCtrl = require('../../controllers/api/lists');
 
-// GET /api/orders/cart
-router.get('/cart', ordersCtrl.cart);
-// POST /api/orders/cart/items/:id
-router.post('/cart/items/:id', ordersCtrl.addToCart);
-// POST /api/orders/cart/checkout
-router.post('/cart/checkout', ordersCtrl.checkout);
-// POST /api/orders/cart/qty
-router.put('/cart/qty', ordersCtrl.setItemQtyInCart);
+// GET /api/favorite
+router.get('/favorite', ordersCtrl.favorite);
+// POST /api/favorite/bikes/:id
+router.post('/favorite/bikes/:id', favouritesCtrl.addToFavorite);
+// POST /api/favorite/save
+router.post('/favorite/save', favouritesCtrl.save);
+// POST /api/favorite/qty
+router.put('/favorite/qty', favouritesCtrl.setBikeQtyInFavorite);
 
 module.exports = router;

@@ -49,7 +49,7 @@ code {
 .flex-ctr-ctr {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-bikes: center;
 }
 
 .flex-col {
@@ -67,7 +67,7 @@ code {
 .section-heading {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-bikes: center;
   background-color: var(--tan-1);
   color: var(--text-dark);
   border: .1vmin solid var(--tan-3);
@@ -99,7 +99,7 @@ form {
 label {
   font-size: 2vmin;
   display: flex;
-  align-items: center;
+  align-bikes: center;
 }
 
 input {

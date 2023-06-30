@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-// Ensure the Category model is processed by Mongoose (for populating Menu Item queries)
-require('./category');
-const itemSchema = require('./itemSchema');
+// Ensure the Make model is processed by Mongoose (for populating BikesFetured Bike queries)
+require('./make');
+const bikeSchema = require('./bikeSchema');
 
-module.exports = mongoose.model('Item', itemSchema);
+module.exports = mongoose.model('Bike', bikeSchema);

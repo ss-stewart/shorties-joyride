@@ -1,8 +1,8 @@
-.MenuListItem {
+.BikesFeturedListBike {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-bikes: center;
   margin-bottom: 3vmin;
   padding: 2vmin;
   color: var(--text-light);
@@ -12,7 +12,7 @@
   font-size: 4vmin;
 }
 
-.MenuListItem .emoji {
+.BikesFeturedListBike .emoji {
   height: 8vw;
   width: 8vw;
   font-size: 4vw;
@@ -21,18 +21,18 @@
   border-radius: 1vmin;
 }
 
-.MenuListItem .buy {
+.BikesFeturedListBike .buy {
   display: flex;
   flex-direction: column;
 }
 
-.MenuListItem .buy span {
+.BikesFeturedListBike .buy span {
   font-size: 1.7vw;
   text-align: center;
   color: var(--text-light);
 }
 
-.MenuListItem .name {
+.BikesFeturedListBike .name {
   font-size: 2vw;
   text-align: center;
   color: var(--text-light);

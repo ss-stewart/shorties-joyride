@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const itemsCtrl = require('../../controllers/api/items');
+const bikesCtrl = require('../../controllers/api/bikes');
 
-// GET /api/items
-router.get('/', itemsCtrl.index);
-// GET /api/items/:id
-router.get('/:id', itemsCtrl.show);
+// GET /api/bikes
+router.get('/', bikesCtrl.index);
+// GET /api/bikes/:id
+router.get('/:id', bikesCtrl.show);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 .OrderDetail {
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-bikes: center;
   padding: 3vmin;
   font-size: 2vmin;
   color: var(--text-light);
@@ -11,7 +11,7 @@
   width: 100%
 }
 
-.OrderDetail .line-item-container {
+.OrderDetail .line-bike-container {
   margin-top: 3vmin;
   justify-content: flex-start;
   height: calc(100vh - 18vmin);
@@ -30,7 +30,7 @@
 .OrderDetail .total span {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-bikes: center;
   font-size: 1.5vw;
   color: var(--text-dark);
 }
@@ -40,7 +40,7 @@
   justify-content: flex-end;
 }
 
-.OrderDetail .hungry {
+.OrderDetail {
   position: absolute;
   top: 50vh;
   font-size: 2vmin;

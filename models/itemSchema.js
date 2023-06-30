@@ -1,12 +1,12 @@
 const Schema = require('mongoose').Schema;
 
-const itemSchema = new Schema({
+const bikeSchema = new Schema({
   name: { type: String, required: true },
   emoji: String,
-  category: {type: Schema.Types.ObjectId, ref: 'Category'},
-  price: { type: Number, required: true }
+  make: {type: Schema.Types.ObjectId, ref: 'Make'},
+  a: { type: Number, required: true }
 }, {
   timestamps: true
 });
 
-module.exports = itemSchema;
+module.exports = bikeSchema;

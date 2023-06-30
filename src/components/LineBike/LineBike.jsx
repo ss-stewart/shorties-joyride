@@ -1,12 +1,12 @@
-import './LineItem.css';
+import './LineBike.css';
 
-export default function LineItem({ lineItem, isPaid }) {
+export default function LineBike({ lineBike, isPaid }) {
   return (
-    <div className="LineItem">
-      <div className="flex-ctr-ctr">{lineItem.item.emoji}</div>
+    <div className="LineBike">
+      <div className="flex-ctr-ctr">{lineBike.bike.emoji}</div>
       <div className="flex-ctr-ctr flex-col">
-        <span className="align-ctr">{lineItem.item.name}</span>
-        <span>{lineItem.item.price.toFixed(2)}</span>
+        <span className="align-ctr">{lineBike.bike.name}</span>
+        <span>{lineBike.bike.avgCost.toFixed(2)}</span>
       </div>
       <div className="qty" style={{ justifyContent: isPaid && 'center' }}>
         {!isPaid &&
@@ -15,7 +15,7 @@ export default function LineItem({ lineItem, isPaid }) {
             onClick={() => alert('clicked')}
           >−</button>
         }
-        <span>{lineItem.qty}</span>
+        <span>{lineBike.qty}</span>
         {!isPaid &&
           <button
             className="btn-xs"
@@ -23,7 +23,7 @@ export default function LineItem({ lineItem, isPaid }) {
           >+</button>
         }
       </div>
-      <div className="ext-price">${lineItem.extPrice.toFixed(2)}</div>
+      <div className="ext-avgCost">${lineBike.extAvgCost.toFixed(2)}</div>
     </div>
   );
 }
