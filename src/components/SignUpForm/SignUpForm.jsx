@@ -20,20 +20,18 @@ export default class SignUpForm extends Component {
   handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      const {name, email, password} = this.state;
-      const formData = {name, email, password};
-      // The promise returned by the signUp service
-      // method will resolve to the user object included
-      // in the payload of the JSON Web Token (JWT)
+      const formData = {...this.state};
+      delete formData.confirm;
+      delete formData.error;
       const user = await signUp(formData);
       this.props.setUser(user);
     } catch {
-      // An error occurred
-      // Probably due to a duplicate email
+      // An error occurred, like a dup email address
       this.setState({ error: 'Sign Up Failed - Try Again' });
     }
   };
 
+  
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
@@ -55,4 +53,5 @@ export default class SignUpForm extends Component {
       </div>
     );
   }
+  
 }

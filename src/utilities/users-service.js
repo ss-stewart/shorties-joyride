@@ -1,37 +1,44 @@
-// Service modules export business/app logic
-// such as managing tokens, etc.
-// Service modules often depend upon API modules
-// for making AJAX requests to the server.
+// Service modules are where we put our
+// "business"/application logic
+// For example, when we signup or log in, 
+// we will need to save the token we received 
+// from the server - is that type of code
+// good to put in the React component?
+// NO!
 
 import * as usersAPI from './users-api';
 
 export async function signUp(userData) {
+  // Delegate the request to the users-api
+  // which will ultimatelly return a JSON Web Token (JWT)
   const token = await usersAPI.signUp(userData);
-  localStorage.setBike('token', token);
+  // Persist the token 
+  localStorage.setItem('token', token);
   return getUser();
 }
 
 export async function login(credentials) {
-  // Delegate the AJAX request to the users-api.js
-  // module.
+  // Delegate the request to the users-api
+  // which will ultimatelly return a JSON Web Token (JWT)
   const token = await usersAPI.login(credentials);
-  localStorage.setBike('token', token);
+  // Persist the token 
+  localStorage.setItem('token', token);
   return getUser();
 }
 
 export function logOut() {
-  localStorage.removeBike('token');
+  localStorage.removeItem('token');
 }
 
+// Return the token if valid, otherwise return null
 export function getToken() {
-  // getBike will return null if the key does not exists
-  const token = localStorage.getBike('token');
+  const token = localStorage.getItem('token');
   if (!token) return null;
+  // Obtain the payload of the token
+  // so that we can check if it's expired
   const payload = JSON.parse(atob(token.split('.')[1]));
-  // A JWT's exp is expressed in seconds, not miliseconds
-  if (payload.exp * 1000 < Date.now()) {
-    // Token has expired
-    localStorage.removeBike('token');
+  if (payload.exp < Date.now() / 1000) {
+    localStorage.removeItem('token');
     return null;
   }
   return token;
@@ -41,5 +48,3 @@ export function getUser() {
   const token = getToken();
   return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
-
-

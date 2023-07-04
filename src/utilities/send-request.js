@@ -1,8 +1,6 @@
 import { getToken } from './users-service';
 
 export default async function sendRequest(url, method = 'GET', payload = null) {
-  // Fetch accepts an options object as the 2nd argument
-  // used to include a data payload, set headers, specifiy the method, etc.
   const options = { method };
   if (payload) {
     options.headers = { 'Content-Type': 'application/json' };
@@ -10,15 +8,13 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
   }
   const token = getToken();
   if (token) {
-    // Need to add an Authorization header
-    // Use the Logical OR Assignment operator
-    options.headers ||= {};
-    // Older approach
-    // options.headers = options.headers || {};
-    options.headers.Authorization = `Bearer ${token}`;
+    // Great use case for the Logical OR Assignment Operator
+    options.headers ||= {...options, Authorization: `Bearer ${token}`};
   }
   const res = await fetch(url, options);
-  // if res.ok is false  something went wrong
+  // res.ok will be false if the status code is not 200-299
+  // res.json() returns a promise that resolves
+  // to the data that was sent back by the server
   if (res.ok) return res.json();
   throw new Error('Bad Request');
 }
